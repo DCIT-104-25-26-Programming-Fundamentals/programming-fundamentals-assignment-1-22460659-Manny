@@ -68,3 +68,101 @@
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
 
+def addition(a, b):
+    return a + b
+
+
+def subtraction(a, b):
+    return a - b
+
+
+def multiplication(a, b):
+    return a * b
+
+
+def division(a, b):
+    if b == 0:
+        return None
+    return round(a / b, 2)
+
+
+def modulus(a, b):
+    if b == 0:
+        return None
+    return a % b
+
+
+def exponentiation(a, b):
+    return a ** b
+
+
+def get_numbers():
+    num1 = input("Enter first number : ")
+    num2 = input("Enter second number: ")
+
+    try:
+        return float(num1), float(num2)
+    except ValueError:
+        print("Error: Please enter valid numbers.")
+        return None, None
+
+
+def main():
+    while True:
+        print("\n============================")
+        print("     SIMPLE CALCULATOR")
+        print("============================")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Modulus")
+        print("6. Exponentiation")
+        print("7. Quit")
+
+        choice = input("Select an operation (1-7): ")
+
+        if choice == "7":
+            print("Goodbye!")
+            break
+
+        if choice not in ["1", "2", "3", "4", "5", "6"]:
+            print("Invalid choice. Please select from 1 to 7.")
+            continue
+
+        a, b = get_numbers()
+        if a is None:
+            continue
+
+        if choice == "1":
+            result = addition(a, b)
+            print(f"Result: {a} + {b} = {result}")
+
+        elif choice == "2":
+            result = subtraction(a, b)
+            print(f"Result: {a} - {b} = {result}")
+
+        elif choice == "3":
+            result = multiplication(a, b)
+            print(f"Result: {a} * {b} = {result}")
+
+        elif choice == "4":
+            result = division(a, b)
+            if result is None:
+                print("Error: Cannot divide by zero.")
+            else:
+                print(f"Result: {a} / {b} = {result}")
+
+        elif choice == "5":
+            result = modulus(a, b)
+            if result is None:
+                print("Error: Cannot divide by zero.")
+            else:
+                print(f"Result: {a} % {b} = {result}")
+
+        elif choice == "6":
+            result = exponentiation(a, b)
+            print(f"Result: {a} ** {b} = {result}")
+
+
+main()
